@@ -33,15 +33,27 @@ The Greenlight API is built with the following tools and technologies:
 - **Database**: PostgreSQL
 - **Deployment**: Digital Ocean (Linux server)
 
-## Deployment
+## Local Development
 
-At the end of the project, the Greenlight API will be deployed to a Linux server hosted on Digital Ocean. The deployment process will involve:
+- Setup postgresql, create a database called `greenlight` and set the database DSN to env variable `GREENLIGHT_DB_DSN`. This can also be stored in `.envrc` file in project root.
+- Make sure the postgresql service is running with the active DSN
+- Run `make db/migrations/up` to create tables for the API
+- Install Golang and run `go mod tidy` to install dependencies
+- Run `make run/api` to run the API locally
+- You can now make requests to the Greenlight API in the specified port (default, 4000) using curl or postman.
+- Look at the API spec above to try out different API endpoints.
 
-- Configuring a production-ready PostgreSQL database.
-- Setting up the Go binary on the server.
-- Configuring TLS/SSL for secure communication.
+## Learning Outcomes
 
-This project is still in the works. This README will be updated once deployment is completed.
+- HTTP server setup and configuration
+- Parsing command line flags from external input to CLI
+- Implementing middlewares
+- Setting up database and running migrations
+- Implementing pagination, sorting and text search
+- Using background services to send an email or perform graceful shutdown
+- Implementing user registration and token based authentication and authorization
+- Configuring CORS as a middleware.
+- Writing Makefile for easy to understand CLI commands.
 
 ## Acknowledgements
 
